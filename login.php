@@ -11,10 +11,10 @@ $data = trim($data);
 
 $username=test_input($_POST['username']);
 $password=md5(test_input($_POST['password']));
-$query = mysql_query("select id from t_user where username='$username'");
-$num = mysql_num_rows($query);
+$query = mysqli_query($link,"select id from t_user where username='$username'");
+$num = mysqli_num_rows($query);
 if($num==1) {
-    $que = mysql_query("select password from t_user where id=='$query'");
+    $que = mysqli_query($link,"select password from t_user where id=='$query'");
     if ($password==$que) {
         echo '登陆成功';
         //这里写推送信息

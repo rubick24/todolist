@@ -27,34 +27,29 @@ function chk_form(){
 	if(email.value==""){
 		alert("Email不能为空！");
 		return false;
-		//email.focus();
 	}
 	var preg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/; //匹配Email
 	if(!preg.test(email.value)){ 
 		alert("Email格式错误！");
 		return false;
-		//email.focus();
 	}
 }
 </script>
 </head>
 
 <body>
-<div id="header">
-   <div id="logo"><h1><a href="localhost:8089/index.html" title="返回首页">TODOLIST</a></h1></div>
-</div>
+
 
 <div id="main">
    <h2 class="top_title"><a href="localhost:8089/signup.html">用户注册</a></h2>
    <div class="demo">
    		<form id="reg" action="register.php" method="post" onsubmit="return chk_form();">
         	<p>用户名：<input type="text" class="input" name="username" id="user"></p>
-            <p>密 &nbsp; 码：<input type="password" class="input" name="password" id="pass"></p>
+            <p>密码：<input type="password" class="input" name="password" id="pass"></p>
             <p>E-mail：<input type="text" class="input" name="email" id="email"></p>
             <p><input type="submit" class="btn" value="提交注册"></p>
         </form>
 	</div>
- <br/><div class="ad_76090"><script src="/js/ad_js/bd_76090.js" type="text/javascript"></script></div><br/>
 </div>
 
 </body>

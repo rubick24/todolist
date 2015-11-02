@@ -12,8 +12,9 @@ function test_input($data)
 $username = test_input($_POST['username']);
 
 //检测用户名是否存在
-$query = mysql_query("select id from t_user where username='$username'");
-$num = mysql_num_rows($query);
+$query = mysqli_query($link,"select id from t_user where username=$username");
+$num = mysqli_num_rows($query);
+echo $num;
 if($num==1){
 	echo '<script>alert("用户名已存在，请更换用户名");window.history.go(-1);</script>';
 	exit;
@@ -27,9 +28,11 @@ $token_exptime = time()+60*60*24;//过期时间为24小时后
 
 $sql = "insert into `t_user` (`username`,`password`,`email`,`token`,`token_exptime`,`regtime`) values ('$username','$password','$email','$token','$token_exptime','$regtime')";
 
-mysql_query($sql);
+echo $sql;
 
-if(mysql_insert_id()){//写入成功，发邮件
+mysqli_query($link,$sql);
+
+if(mysqli_insert_id($link)){//写入成功，发邮件
 	include_once("smtp.class.php");
 	$smtpserver = "smtp.163.com"; //SMTP服务器
     $smtpserverport = 25; //SMTP服务器端口
