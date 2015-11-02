@@ -48,5 +48,5 @@ if(mysql_insert_id()){//写入成功，发邮件
 	}else{
 		$msg = $rs;	
 	}
-echo $msg;
+    echo $msg;}
 ?>
