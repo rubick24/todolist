@@ -1,6 +1,5 @@
 <?php
 include_once("connect.php");
-
 function test_input($data)
 {
 $data = trim($data);
@@ -9,16 +8,19 @@ $data = trim($data);
     return $data;
 }
 
+header('Content-type: text/html; charset=utf-8');
 $username=test_input($_POST['username']);
 $password=md5(test_input($_POST['password']));
-$query = mysqli_query($link,"select id from t_user where username='$username'");
+$query = mysqli_query($link,"select id from t_user where username=$username");
 $num = mysqli_num_rows($query);
 if($num==1) {
-    $que = mysqli_query($link,"select password from t_user where id=='$query'");
-    if ($password==$que) {
-        echo 'µÇÂ½³É¹¦';
-        //ÕâÀïÐ´ÍÆËÍÐÅÏ¢
+    $id=mysqli_fetch_array($query);
+    $pw=mysqli_fetch_array(mysqli_query($link,"select password from t_user where id=$id[0]"));
+    $ps=$pw['password'];
+    if ($password==$ps) {
+        echo "ç™»å½•æˆåŠŸï¼å³å°†è·³è½¬..";
+        header("refresh:1;url=index.php");//ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
     }
-    else echo 'ÃÜÂë´íÎó ÇëÖØÊÔ';
+    else echo "å¯†ç é”™è¯¯ è¯·é‡è¯•";
 }
-else echo 'ÓÃ»§Ãû²»´æÔÚ';
+else echo "ç”¨æˆ·åä¸å­˜åœ¨";
