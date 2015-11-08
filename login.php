@@ -8,9 +8,20 @@ $data = trim($data);
     return $data;
 }
 
-header('Content-type: text/html; charset=utf-8');
 $username=test_input($_POST['username']);
-$password=md5(test_input($_POST['password']));
+$pswd=test_input($_POST['password']);
+$password=md5($pswd);
+$remember = $_POST['remember'];
+if($remember == 1){
+    setcookie('username',$username,time()+3600*24);
+    setcookie('pswd',$pswd,time()+3600*24);
+    setcookie('remember',$remember,time()+3600*24);
+}else{
+    setcookie('username',$username,time()-3600*24);
+    setcookie('pswd',$pswd,time()-3600*24);
+    setcookie('remember',$remember,time()-3600*24);
+}
+
 $query = mysqli_query($link,"select id from t_user where username=$username");
 $num = mysqli_num_rows($query);
 if($num==1) {
@@ -19,7 +30,7 @@ if($num==1) {
     $ps=$pw['password'];
     if ($password==$ps) {
         echo "登录成功！即将跳转..";
-        header("refresh:1;url=index.php");//����д������Ϣ
+        header("refresh:1;url=index.php");
     }
     else echo "密码错误 请重试";
 }

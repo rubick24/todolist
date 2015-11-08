@@ -11,7 +11,6 @@ function test_input($data)
 
 $username = test_input($_POST['username']);
 
-//检测用户名是否存在
 $query = mysqli_query($link,"select id from t_user where username=$username");
 $num = mysqli_num_rows($query);
 if($num==1){
@@ -22,8 +21,8 @@ $password = md5(test_input($_POST['password']));
 $email = test_input($_POST['email']);
 $regtime = time();
 
-$token = md5($username.$password.$regtime); //创建用于激活识别码
-$token_exptime = time()+60*60*24;//过期时间为24小时后
+$token = md5($username.$password.$regtime);
+$token_exptime = time()+60*60*24;
 
 $sql = "insert into `t_user` (`username`,`password`,`email`,`token`,`token_exptime`,`regtime`) values ('$username','$password','$email','$token','$token_exptime','$regtime')";
 
