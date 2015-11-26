@@ -30,7 +30,7 @@ if($num==1) {
     $ps=$pw['password'];
     if ($password==$ps) {
         echo "登录成功！即将跳转..";
-        header("refresh:1;url=index.php");
+        header("refresh:1;url=index.php?userid=".$id[0]."");
     }
     else echo "密码错误 请重试";
 }

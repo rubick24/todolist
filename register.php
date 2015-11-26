@@ -27,7 +27,7 @@ $token_exptime = time()+60*60*24;
 $sql = "insert into `t_user` (`username`,`password`,`email`,`token`,`token_exptime`,`regtime`) values ('$username','$password','$email','$token','$token_exptime','$regtime')";
 
 mysqli_query($link,$sql);
-echo  "<br/>请点击链接激活您的帐号。<br/><a href='active.php?verify=".$token."' target='_blank'>register/active.php?verify=".$token."</a><br/>";
+echo  "<br/>请点击链接激活您的帐号。<br/><a href='active.php?verify=".$token."' target='_blank'>active.php?verify=".$token."</a><br/>";
 
 /*if(mysqli_insert_id($link)){//写入成功，发邮件
 	include_once("smtp.class.php");

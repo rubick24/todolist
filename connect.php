@@ -4,6 +4,7 @@ $db_user="root";
 $db_pass="111111";
 $db_name="todolist";
 $timezone="Asia/Shanghai";
+$TBL_PR = "calendar_";
 
 $link=mysqli_connect($host,$db_user,$db_pass);
 echo mysqli_error($link);
