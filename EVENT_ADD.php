@@ -1,55 +1,6 @@
 <?php
 include_once("connect.php");
 
-if($use_auth)
-{
-	if(!isset($_SESSION['admin_id']))
-	{
-
-		?>
-		<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-		<html>
-		<head>
-		<title>TODOLIST - Add Event</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<link href="cal.css" rel="stylesheet" type="text/css">
-		</head>
-
-		<body>
-		<br><br>
-		<form name="form1" method="post" action="EVENT_ADD.php">
-		  <table border="0" align="center" cellpadding="0" cellspacing="0">
-			<tr>
-			  <td>Username:</td>
-			</tr>
-			<tr>
-			  <td><input name="USER" type="text" id="USER"></td>
-			</tr>
-			<tr>
-			  <td height="15">Password:</td>
-			</tr>
-			<tr>
-			  <td><input name="PASS" type="password" id="PASS"></td>
-			</tr>
-			<tr>
-			  <td height="50"><div align="center">
-				  <input type="submit" name="Submit" value="           login           ">
-				</div></td>
-			</tr>
-		  </table>
-		<input type="hidden" name="day" id="day" value="<? echo $_GET['day']; ?>">
-		<input type="hidden" name="month" id="month" value="<? echo $_GET['month']; ?>">
-		<input type="hidden" name="year" id="year" value="<? echo $_GET['year']; ?>">
-		<input type="hidden" name="id" id="id" value="<? echo $_GET['id']; ?>">
-		</form>
-		</body>
-		</html>
-		<?
-
-
-
-	}
-}
 
 IF(isset($_POST['submit']))
 {
@@ -58,7 +9,7 @@ IF(isset($_POST['submit']))
 	$_POST['description'] = substr($_POST['description'],0,500);
 	$_POST['title'] = substr($_POST['title'],0,30);
 
-	mysqli_query($link,"INSERT INTO list ( `event_id` , `event_day` , `event_month` , `event_year` , `event_time` , `event_title` , `event_desc` ) VALUES ('', '".addslashes($_POST['day'])."', '".addslashes($_POST['month'])."', '".addslashes($_POST['year'])."', '".addslashes($_POST['hour'].":".$_POST['minute'])."', '".addslashes($_POST['title'])."', '".addslashes($_POST['description'])."')");
+	mysqli_query($link,"INSERT INTO list (`userid`,`event_id` , `event_day` , `event_month` , `event_year` , `event_time` , `event_title` , `event_desc` ) VALUES (".$_COOKIE['userid'].",'', '".addslashes($_POST['day'])."', '".addslashes($_POST['month'])."', '".addslashes($_POST['year'])."', '".addslashes($_POST['hour'].":".$_POST['minute'])."', '".addslashes($_POST['title'])."', '".addslashes($_POST['description'])."')");
 	$_POST['month'] = $_POST['month'] + 1;
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">

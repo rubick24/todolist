@@ -21,7 +21,8 @@
     </script>
 </head>
 <body>
-<form id="reg" action="login.php" method="post" onsubmit="return chk_form();">
+<div id="登录" align="center" >
+    <form id="reg" action="login.php" method="post" onsubmit="return chk_form();">
     <p>用户名：<input type="text" class="input" name="username" id="user" value="<?php echo $_COOKIE['username'];?>"></p>
     <p>密码：<input type="password" class="input" name="password" id="pass" value="<?php echo $_COOKIE['pswd']?>"></p>
     <p>记住密码
@@ -30,6 +31,7 @@
            else{($_COOKIE['remember'] == "")?><input type="checkbox" name="remember" value="1"><?php } ?></p>
     <p><input type="submit" class="btn" value="登录"></p>
 </form>
+</div>
 <p>还没有账号？现在<a href="signup.html">注册</a></p>
 </body>
 </html>
