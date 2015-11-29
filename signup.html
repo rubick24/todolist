@@ -4,10 +4,46 @@
 <meta charset="utf-8">
 <title>用户注册</title>
 <style type="text/css">
-.demo{width:400px; margin:40px auto 0 auto; min-height:250px;}
-.demo p{line-height:30px; padding:4px}
+	#main {
+		border: 1px solid #a0b1c4;
+		width: 334px;
+		height: 387px;
+		_height: 371px;
+		background-color: #fff;
+		position: relative;
+		z-index: 12;
+		padding: 0;
+		border-radius: 5px;
+		overflow: hidden;
+	}
+.signup{width:300px; margin:40px auto 0 auto; min-height:250px;}
+.signup p{line-height:30px; padding:4px}
 .input{width:180px; height:20px; padding:1px; line-height:20px; border:1px solid #999}
-.btn{position: relative;overflow: hidden;display:inline-block;*display:inline;padding:4px 20px 4px;font-size:14px;line-height:18px;*line-height:20px;color:#fff;text-align:center;vertical-align:middle;cursor:pointer;background-color:#5bb75b;border:1px solid #cccccc;border-color:#e6e6e6 #e6e6e6 #bfbfbf;border-bottom-color:#b3b3b3;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px; margin-left:48px}
+.btn {
+		display: inline-block;
+		*display: inline;
+		*zoom: 1;
+		box-sizing: border-box;
+		width: auto;
+		height: 40px;
+		height: 38px \9;
+		line-height: 38px;
+		padding: 0 20px;
+		margin-top: 9px;
+		*vertical-align: -6px;
+		font-size: 16px;
+		font-weight: normal;
+		color: #fff;
+		text-align: center;
+		background: #5a98de;
+		border-radius: 3px;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		outline: none;
+		border: none;
+		cursor: pointer;
+	}
 </style>
 <script type="text/javascript">
 function chk_form(){
@@ -37,20 +73,22 @@ function chk_form(){
 </script>
 </head>
 
-<body>
+<body style="background-color:#d9edf7; " >
 
-
-<div id="main">
-   <h2 class="top_title"><a href="localhost:8089/signup.html">用户注册</a></h2>
-   <div class="demo">
+<div align="center">
+<div id="main" align="center" style="width: 334px; height: 387px; visibility: visible;">
+	<br>
+   <h3 align="center" class="top_title">用户注册</h3>
+   <div class="signup">
    		<form id="reg" action="register.php" method="post" onsubmit="return chk_form();">
         	<p>用户名：<input type="text" class="input" name="username" id="user"></p>
-            <p>密码：<input type="password" class="input" name="password" id="pass"></p>
+            <p>密&nbsp;码：<input type="password" class="input" name="password" id="pass"></p>
             <p>E-mail：<input type="text" class="input" name="email" id="email"></p>
-            <p><input type="submit" class="btn" value="提交注册"></p>
+            <p align="center"><input type="submit" class="btn" value="提交注册"></p>
+			<p style="font-size: small" align="right">已经注册过了？现在<a href="login.php">登录</a> </p>
         </form>
 	</div>
 </div>
-
+</div>
 </body>
 </html>

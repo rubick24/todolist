@@ -23,15 +23,14 @@ if($num==1) {
     $ps=$pw['password'];
     if ($password==$ps) {
         if($remember == 1){
-            setcookie('username',$username,time()+3600*24);
             setcookie('pswd',$pswd,time()+3600*24);
             setcookie('remember',$remember,time()+3600*24);
-            $_SESSION['userid']=$id[0];
         }else{
-            setcookie('username',$username,time()-3600*24);
             setcookie('pswd',$pswd,time()-3600*24);
             setcookie('remember',$remember,time()-3600*24);
         }
+        setcookie('username',$username,time()+3600*24);
+        $_SESSION['userid']=$id[0];
         echo "登录成功！即将跳转..";
         header("refresh:1;url=index.php");
     }
