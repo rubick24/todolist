@@ -201,8 +201,5 @@ session_start();
             </td>
         </tr>
     </table>
-    <?php
-    print_r($_SESSION);
-    ?>
     </body>
     </html>

@@ -1,6 +1,6 @@
 <?php
 include_once("connect.php");
-
+session_start();
 
 IF(isset($_POST['submit']))
 {
