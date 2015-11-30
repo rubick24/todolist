@@ -9,7 +9,7 @@ IF(isset($_POST['submit']))
 	$_POST['description'] = substr($_POST['description'],0,500);
 	$_POST['title'] = substr($_POST['title'],0,30);
 
-	mysqli_query($link,"INSERT INTO list (`userid`,`event_id` , `event_day` , `event_month` , `event_year` , `event_time` , `event_title` , `event_desc` ) VALUES (".$_COOKIE['userid'].",'', '".addslashes($_POST['day'])."', '".addslashes($_POST['month'])."', '".addslashes($_POST['year'])."', '".addslashes($_POST['hour'].":".$_POST['minute'])."', '".addslashes($_POST['title'])."', '".addslashes($_POST['description'])."')");
+	mysqli_query($link,"INSERT INTO list (`userid`,`event_id` , `event_day` , `event_month` , `event_year` , `event_time` , `event_title` , `event_desc` ) VALUES (".$_SESSION['userid'].",'', '".addslashes($_POST['day'])."', '".addslashes($_POST['month'])."', '".addslashes($_POST['year'])."', '".addslashes($_POST['hour'].":".$_POST['minute'])."', '".addslashes($_POST['title'])."', '".addslashes($_POST['description'])."')");
 	$_POST['month'] = $_POST['month'] + 1;
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -44,14 +44,14 @@ ELSE
 <head>
 <title>todolist - Add Event</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="cal.css" rel="stylesheet" type="text/css">
+<link href="images/cal.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <form name="form1" method="post" action="">
   <table width="480" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td width="200" height="40" valign="top"><span class="addevent">Event Date</span><br>
-        <span class="addeventextrainfo">(月/日/年)</span></td>
+        <span class="addeventextrainfo">(MM/DD/YY)</span></td>
       <td height="40" valign="top"> <select name="month" id="month">
           <option value="1" <? IF($_GET['month'] == "1"){ echo "selected"; } ?>>01</option>
           <option value="2" <? IF($_GET['month'] == "2"){ echo "selected"; } ?>>02</option>
@@ -107,7 +107,7 @@ ELSE
     </tr>
     <tr>
       <td width="200" height="40" valign="top"><span class="addevent">Event Time</span><br>
-        <span class="addeventextrainfo">(24小时制)</span></td>
+        <span class="addeventextrainfo">(24hr Format)</span></td>
       <td height="40" valign="top"> <input name="hour" type="text" id="hour" value="20" size="2" maxlength="2">
         :
         <input name="minute" type="text" id="minute" value="00" size="2" maxlength="2">
