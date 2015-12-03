@@ -4,8 +4,6 @@ session_start();
 
 IF(isset($_POST['submit']))
 {
-	$db_table = "list";
-
 	$_POST['description'] = substr($_POST['description'],0,500);
 	$_POST['title'] = substr($_POST['title'],0,30);
 

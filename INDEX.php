@@ -61,6 +61,23 @@ session_start();
         <title>todolist</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link href="cal.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
+            #top{
+                width: 99.8%;
+                min-width: 800px;
+                background-repeat: repeat-x;
+                background-color: #EFE;
+                color: #464646;
+                left: 0;
+                top: 0 !important;
+                text-align: left;
+                font-size: 12px;
+                z-index: 8000;
+                border: 1px solid #c9c9c9;
+                line-height:0;
+                overflow:hidden;
+            }
+        </style>
         <script language="JavaScript" type="text/JavaScript">
             function MM_jumpMenu(targ, selObj, restore) {
                 eval(targ + ".location='" + selObj.options[selObj.selectedIndex].value + "'");
@@ -72,14 +89,19 @@ session_start();
         </script>
     </head>
 
-    <body>
-    <div align="right">欢迎回来，<? echo $_COOKIE['username']?></div>
-    <div align="center"><span
-            class="currentdate"><? echo date("F Y", mktime(0, 0, 0, $_GET['month'] - 1, 1, $_GET['year'])); ?></span><br>
+    <body style="background-color:#d9edf7; " >
+    <div id="top" style="position: absolute; height: 25px">
+        <p align="right" style="">
+        <?
+        if($_SESSION!=null) echo "欢迎回来，".$_COOKIE['username'];
+        else echo "您好，请<a href=signin.php>登录</a>";
+        ?>&nbsp;&nbsp;</p>
+    </div><br><br>
+    <div align="center"><span class="currentdate"><? echo date("F Y", mktime(0, 0, 0, $_GET['month'] - 1, 1, $_GET['year'])); ?></span><br>
         <br>
     </div>
     <div align="center"><br>
-        <table width="700" border="0" cellspacing="0" cellpadding="0">
+        <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td>
                     <div align="right"><a href="<? echo "index.php?month=$prev_month&amp;year=$prev_year"; ?>">
@@ -123,7 +145,7 @@ session_start();
         </table>
         <br>
     </div>
-    <table width="700" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#000000">
+    <table width="800" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#000000">
         <tr>
             <td>
                 <table width="100%" border="0" cellpadding="0" cellspacing="1">
