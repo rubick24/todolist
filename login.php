@@ -15,7 +15,7 @@ $password=md5($pswd);
 $remember = $_POST['remember'];
 
 
-$query = mysqli_query($link,"select id from t_user where username=$username");
+$query = mysqli_query($link,"select id from t_user where username='$username'");
 $num = mysqli_num_rows($query);
 if($num==1) {
     $id=mysqli_fetch_array($query);

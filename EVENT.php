@@ -41,7 +41,7 @@ while ($info = mysqli_fetch_array($query_result)){
                 </table></td>
         </tr>
         <tr>
-            <td align="right" valign="bottom"><a href="EVENT_DELETE.php?<? echo "day=$info[event_day]&month=$info[event_month]&year=$info[event_year]&id=$info[event_id]"; ?>">Delete</a></td>
+            <td align="right" valign="bottom"><a href="event_delete.php?<? echo "day=$info[event_day]&month=$info[event_month]&year=$info[event_year]&id=$info[event_id]"; ?>">Delete</a></td>
         </tr>
     </table>
     </body>

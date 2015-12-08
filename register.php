@@ -10,8 +10,8 @@ function test_input($data)
 }
 
 $username = test_input($_POST['username']);
-
-$query = mysqli_query($link,"select id from t_user where username=$username");
+echo $username;
+$query = mysqli_query($link,"select id from t_user where username='$username'");
 $num = mysqli_num_rows($query);
 if($num==1){
 	echo '<script>alert("用户名已存在，请更换用户名");window.history.go(-1);</script>';

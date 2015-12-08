@@ -10,14 +10,13 @@ function test_input($data)
 }
 
 $username = test_input($_POST['username']);
-
+if($username!=null){
 $query = mysqli_query($link,"select id from t_user where username=$username");
 $num = mysqli_num_rows($query);
 if($num==1){
-    echo '<script>alert("用户名已存在，请更换用户名");window.history.go(-1);</script>';
-    exit;
+   echo json_encode("{\"status\":\"fail\",\"msg\":\"用户名已存在\"}");
 }
-$password = md5(test_input($_POST['password']));
+else{$password = md5(test_input($_POST['password']));
 $email = test_input($_POST['email']);
 $regtime = time();
 
@@ -47,4 +46,6 @@ if($row){
     $msg = "{\"status\":\"fail\",\"msg\":\"error\"}";
 }
 echo json_encode($msg);
+}}
+else echo json_encode("{\"status\":\"fail\",\"msg\":\"用户名不能为空\"}");
 ?>
