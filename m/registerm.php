@@ -45,7 +45,7 @@ if($row){
 }else{
     $msg = "{\"status\":\"fail\",\"msg\":\"error\"}";
 }
-echo json_encode($msg);
+echo $msg;
 }}
-else echo json_encode("{\"status\":\"fail\",\"msg\":\"用户名不能为空\"}");
+else echo "{\"status\":\"fail\",\"msg\":\"用户名不能为空\"}";
 ?>

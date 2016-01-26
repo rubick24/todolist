@@ -92,26 +92,26 @@ session_start();
     <body style="background-color:#d9edf7; " >
     <div id="top" style="position: absolute; height: 25px">
         <p align="right" style="">
-        <?
+        <?php
         if($_SESSION!=null) echo "欢迎回来，".$_COOKIE['username'];
         else echo "您好，请<a href=signin.php>登录</a>";
         ?>&nbsp;&nbsp;</p>
     </div><br><br>
-    <div align="center"><span class="currentdate"><? echo date("F Y", mktime(0, 0, 0, $_GET['month'] - 1, 1, $_GET['year'])); ?></span><br>
+    <div align="center"><span class="currentdate"><?php echo date("F Y", mktime(0, 0, 0, $_GET['month'] - 1, 1, $_GET['year'])); ?></span><br>
         <br>
     </div>
     <div align="center"><br>
         <table width="800" border="0" cellspacing="0" cellpadding="0">
             <tr>
                 <td>
-                    <div align="right"><a href="<? echo "index.php?month=$prev_month&amp;year=$prev_year"; ?>">
+                    <div align="right"><a href="<?php echo "index.php?month=$prev_month&amp;year=$prev_year"; ?>">
                             &lt;&lt;</a></div>
                 </td>
                 <td width="200">
                     <div align="center">
 
                         <select name="month" id="month" onChange="MM_jumpMenu('parent',this,0)">
-                            <?
+                            <?php
                             for ($i = 1; $i <= 12; $i++) {
                                 $link = $i + 1;
                                 IF ($_GET['month'] == $link) {
@@ -124,7 +124,7 @@ session_start();
                             ?>
                         </select>
                         <select name="year" id="year" onChange="MM_jumpMenu('parent',this,0)">
-                            <?
+                            <?php
                             for ($i = 2015; $i <= 2025; $i++) {
                                 IF ($i == $_GET['year']) {
                                     $selected = "selected";
@@ -138,7 +138,7 @@ session_start();
                     </div>
                 </td>
                 <td>
-                    <div align="left"><a href="<? echo "index.php?month=$next_month&amp;year=$next_year"; ?>">
+                    <div align="left"><a href="<?php echo "index.php?month=$next_month&amp;year=$next_year"; ?>">
                             &gt;&gt;</a></div>
                 </td>
             </tr>
@@ -173,7 +173,7 @@ session_start();
                         </td>
                     </tr>
                     <tr valign="top" bgcolor="#FFFFFF">
-                        <?
+                        <?php
                         for ($i = 1; $i <= $first_day_of_month - 1; $i++) {
                             $days_so_far = $days_so_far + 1;
                             $count_boxes = $count_boxes + 1;

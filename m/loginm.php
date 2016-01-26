@@ -31,10 +31,10 @@ if($num==1) {
         }
         setcookie('username',$username,time()+3600*24);
         $_SESSION['userid']=$id[0];
-        echo json_encode("{\"status\":\"success\",\"msg\":\"登录成功\"}");
+        echo "{\"status\":\"success\",\"msg\":\"登录成功\"}";
         header("refresh:1;url=../index.php");
     }
-    else echo json_encode("{\"status\":\"fail\",\"msg\":\"密码错误\"}");
+    else echo "{\"status\":\"fail\",\"msg\":\"密码错误\"}";
 }
-else echo json_encode("{\"status\":\"fail\",\"msg\":\"用户名不存在\"}");
+else echo "{\"status\":\"fail\",\"msg\":\"用户名不存在\"}";
 ?>

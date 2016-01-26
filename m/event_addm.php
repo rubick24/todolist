@@ -6,6 +6,6 @@ session_start();
 
     mysqli_query($link,"INSERT INTO list (`userid`,`event_id` , `event_day` , `event_month` , `event_year` , `event_time` , `event_title` , `event_desc` ) VALUES (".$_SESSION['userid'].",'', '".addslashes($_POST['day'])."', '".addslashes($_POST['month'])."', '".addslashes($_POST['year'])."', '".addslashes($_POST['hour'].":".$_POST['minute'])."', '".addslashes($_POST['title'])."', '".addslashes($_POST['description'])."')");
     $_POST['month'] = $_POST['month'] + 1;
-    echo json_encode("{\"status\":\"success\",\"msg\":\"添加成功\"}");
+    echo "{\"status\":\"success\",\"msg\":\"添加成功\"}";
 ?>
 
